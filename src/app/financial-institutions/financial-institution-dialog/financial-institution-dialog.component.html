@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>
+  {{ data.isRegistered ? 'Unregister institution' : 'Register institution'
+  }}<mat-icon class="iconCreate">create</mat-icon>
+</h1>
+<div mat-dialog-content>
+  <p>{{ data.isRegistered ? 'Remove' : 'Add' }} registration for {{ data.name }}</p>
+</div>
+
+<div *ngIf="!data.isRegistered">
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.clientId" placeholder="Client ID" />
+    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.clientSecret" placeholder="Client Secret" />
+    <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+  </mat-form-field>
+</div>
+<!-- <form [formGroup]="profileForm" (ngSubmit)="onSubmit()"> -->
+<div class="btnRegister" mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <!-- <button [mat-dialog-close]="data" mat-button cdkFocusInitial>Ok</button> -->
+  <button mat-button (click)="onOkClick(data)">Ok</button>
+</div>
+<!-- </form> -->

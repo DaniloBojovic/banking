@@ -1,0 +1,18 @@
+<!-- <h1 mat-dialog-title>Licence</h1>
+<mat-dialog-content>
+    Content goes here
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button>Add</button>
+    <button mat-button>Cancel</button>
+</mat-dialog-actions> -->
+
+<h1 mat-dialog-title>Licence<mat-icon class="iconCreate">create</mat-icon></h1>
+<div mat-dialog-content>
+  <p>{{ data.hasLicence ? 'Remove' : 'Add' }} licence for {{ data.name }}</p>
+</div>
+
+<div class="btnClose" mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="onOkClick(data)" cdkFocusInitial>Ok</button>
+</div>

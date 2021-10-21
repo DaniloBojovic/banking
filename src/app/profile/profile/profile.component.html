@@ -1,0 +1,27 @@
+<div class="container">
+  <mat-card class="matCard">
+    <mat-card-title class="matTitle" translate>
+      <mat-icon class="title-icon">account_circle</mat-icon><br />
+      <p>TPP Profile Form</p>
+    </mat-card-title>
+    <!-- <mat-card-title class="matTitle">
+        TPP Profile Form
+      </mat-card-title> -->
+    <mat-card-content>
+      <div class="example-container">
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+          <mat-form-field>
+            <input matInput placeholder="Tpp Name" formControlName="tppName" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Tpp Code" formControlName="tppCode" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Email" formControlName="email" />
+          </mat-form-field>
+          <button mat-raised-button class="submit-btn" color="primary" [disabled]="!profileForm.valid">Submit</button>
+        </form>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

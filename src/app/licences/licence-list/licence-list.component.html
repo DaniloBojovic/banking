@@ -1,0 +1,53 @@
+<div class="container">
+  <mat-card>
+    <mat-card-title translate>Licences</mat-card-title>
+    <mat-card-content>
+      <table mat-table [dataSource]="countriesSource$" class="mat-elevation-z8">
+        <!--- Note that these columns can be defined in any order.
+                            The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- id Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>id.</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+
+        <!-- Licence Column -->
+        <ng-container matColumnDef="hasLicence">
+          <th mat-header-cell *matHeaderCellDef>Licence</th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              mat-fab
+              class="btnHasLicence"
+              [ngStyle]="{ 'background-color': !element.hasLicence ? '#FF5252' : '#69F0AE' }"
+            ></button>
+          </td>
+        </ng-container>
+
+        <!-- Edit Column -->
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button class="btnMore">
+              <mat-icon [matMenuTriggerFor]="afterMenu">more_vert</mat-icon>
+            </button>
+            <mat-menu #afterMenu="matMenu" xPosition="after">
+              <button mat-menu-item (click)="openDialog(element)">
+                {{ !element.hasLicence ? 'Add Licence' : 'Remove Licence' }}
+              </button>
+            </mat-menu>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>

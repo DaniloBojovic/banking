@@ -1,0 +1,53 @@
+.container {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 60%;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+.matCard {
+  padding: 50px 50px 50px 50px;
+
+  // position: fixed;
+  // top: 40%;
+  // left: 50%;
+  // -webkit-transform: translate(-50%, -50%);
+  // transform: translate(-50%, -50%);
+  // width: 60%;
+}
+
+::ng-deep .mat-input-wrapper {
+  width: 400px !important;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.matTitle {
+  text-align: center;
+}
+
+.title-icon {
+  font-size: 50px;
+  //float: right;
+  padding-right: 50px;
+  color: #2196f3;
+}
+
+.submit-btn {
+  width: 100%;
+  font-weight: bold;
+  margin-top: 20px;
+}

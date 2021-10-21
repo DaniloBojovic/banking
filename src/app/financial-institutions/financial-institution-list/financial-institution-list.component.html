@@ -1,0 +1,77 @@
+<div class="container">
+  <mat-card>
+    <!-- <div style="margin-left: 20px;">
+      <mat-form-field>
+        <mat-label>Country</mat-label>
+        <mat-select>
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let country of countries" [value]="country">{{ country }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div> -->
+
+    <div>
+      <mat-form-field>
+        <mat-label>Country</mat-label>
+        <select matNativeControl id="selectCountry" (change)="setUrl($event.target.value)">
+          <option value="C" disabled selected>Select Country</option>
+          <option *ngFor="let country of countries" value="{{ country.id }}" [hidden]="!country.hasLicence">
+            {{ country.name }}
+          </option>
+        </select>
+      </mat-form-field>
+    </div>
+
+    <h1>
+      <mat-card-title translate>Financial Institutions</mat-card-title>
+    </h1>
+    <mat-card-content>
+      <table mat-table [dataSource]="financialInstitutions" class="mat-elevation-z8">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>Id</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
+
+        <!-- <ng-container matColumnDef="bic">
+          <th mat-header-cell *matHeaderCellDef>Bic</th>
+          <td mat-cell *matCellDef="let element">{{ element.bic }}</td>
+        </ng-container> -->
+
+        <ng-container matColumnDef="countryCode">
+          <th mat-header-cell *matHeaderCellDef>Country Code</th>
+          <td mat-cell *matCellDef="let element">{{ element.countryCode }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="isRegistered">
+          <th mat-header-cell *matHeaderCellDef>Registered</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-fab class="btnIsRegistered" [class.is-registered]="element.isRegistered"></button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button class="btnMore">
+              <mat-icon [matMenuTriggerFor]="afterMenu">more_vert</mat-icon>
+              <!--<mat-icon [matMenuTriggerFor]="afterMenu">more_horiz</mat-icon> -->
+            </button>
+            <mat-menu #afterMenu="matMenu" xPosition="after">
+              <button mat-menu-item (click)="openDialog(element)">
+                {{ !element.isRegistered ? 'Register' : 'Unregister' }}
+              </button>
+            </mat-menu>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>
